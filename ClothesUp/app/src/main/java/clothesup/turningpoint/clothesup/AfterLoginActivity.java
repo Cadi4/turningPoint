@@ -18,7 +18,6 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
-import org.xml.sax.InputSource;
 import java.io.StringReader;
 
 public class AfterLoginActivity extends AppCompatActivity implements View.OnClickListener{
@@ -27,6 +26,7 @@ public class AfterLoginActivity extends AppCompatActivity implements View.OnClic
     private TextView deleteToken;
     private TextView logout;
     public static Context contextOfAfterLoginActivity;
+    OAuthNaver oAuthNaver = new OAuthNaver();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,39 +40,42 @@ public class AfterLoginActivity extends AppCompatActivity implements View.OnClic
         logout = (TextView) findViewById(R.id.button_logout);
 
         loginWIthWhat.setText("Login with " + MainActivity.LW);
-        String a = ((MainActivity)MainActivity.mContext).getOpenAPI();
-        if(a==null || a=="")        Log.i("AfterLoginActivity", "nullll");
-        else               Log.i("AfterLoginActivity", "nullllnononono");
-        String.format("%s", a);
-        xmlParshingByXpath(a);
-        Log.w("a????????????????", "왜안될까");
-        Log.d("a????????????????", a);
-        Log.d("a????????????????", String.valueOf(a));
-        Log.i("a????????????????", a);
-        Log.i("a????????????????", String.valueOf(a));
-        emailAddress.setText(a + "@naver.com");
-
+        oAuthNaver.getOpenAPI();
+        String userInfo = oAuthNaver.getOpenAPI();
+        String.format("%s", userInfo);
+        String userEmail = xmlParshingByXpath(userInfo, "email");
+        String userBirthday = xmlParshingByXpath(userInfo, "birthday");
+        String userAge = xmlParshingByXpath(userInfo, "age");
+        String userGender = xmlParshingByXpath(userInfo, "gender");
+        String userName = xmlParshingByXpath(userInfo, "name");
+        emailAddress.setText("email : " + userEmail +
+                                "\nbirthday : " + userBirthday +
+                                "\nage : " + userAge+
+                                "\ngender : " + userGender+
+                                "\nname : " + userName +
+                                "\n");
         deleteToken.setOnClickListener(this);
         logout.setOnClickListener(this);
     }
 
-    private void xmlParshingByXpath(String InputXML) {
+    private String xmlParshingByXpath(String InputXML, String target) {
         try {
-            Log.d("asdf!!!!!XMLXML", "들왔냥");
             InputSource inputSource = new InputSource(new StringReader((InputXML)));
             Document document = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(inputSource);
             XPath xpath = XPathFactory.newInstance().newXPath();
-            NodeList nodeList = (NodeList)xpath.evaluate("//data/response/email/", document, XPathConstants.NODESET);
+            NodeList nodeList = (NodeList)xpath.evaluate("//data/response/" + target, document, XPathConstants.NODESET);
             for(int idx=0; idx<nodeList.getLength(); idx++){
-                Log.d("logdlogd", nodeList.item(idx).getTextContent());
+                Log.d("xml_log", nodeList.item(idx).getTextContent());
+                return nodeList.item(idx).getTextContent();
             }
-            Node node = nodeList.item(0);
-            Node textNode = nodeList.item(0).getChildNodes().item(0);
-            Log.d("asdf!!!!!XMLXML", textNode.getNodeValue());
+            //Node node = nodeList.item(0);
+            //Node textNode = nodeList.item(0).getChildNodes().item(0);
         }
         catch(Exception e){
+            Log.e("XMLparshing error", "XMLerror");
             e.printStackTrace();
         }
+        return null;
     }
 
     @Override
@@ -82,11 +85,11 @@ public class AfterLoginActivity extends AppCompatActivity implements View.OnClic
         //mainActivity = (MainActivity)getApplicationContext();
         switch(v.getId()){
             case R.id.button_delete_token :
-                ((MainActivity)MainActivity.mContext).deleteToken();
+                oAuthNaver.deleteToken();
                 this.finish();
                 break;
-            case R.id.button_logout :
-                ((MainActivity)MainActivity.mContext).logout();
+            case R.id.button_logout:
+                oAuthNaver.logout();
                 this.finish();
                 break;
         }
