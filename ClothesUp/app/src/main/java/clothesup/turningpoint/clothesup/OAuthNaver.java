@@ -53,7 +53,7 @@ public class OAuthNaver {
                 String tokenType = mOAuthLoginInstance.getTokenType(mContext);
                 //mOauthAT.setText(accessToken);    //mOauthRT.setText(refreshToken);   //mOauthExpires.setText(String.valueOf(expiresAt));
                 //mOauthTokenType.setText(tokenType);  //mOAuthState.setText(mOAuthLoginInstance.getState(mContext).toString());
-                Intent intent = new Intent(MainActivity.mContext, AfterLoginActivity.class);
+                Intent intent = new Intent(MainActivity.mContext, MainTabLayout.class);        //after login completed
                 MainActivity.mContext.startActivity(intent);
             } else {
                 String errorCode = mOAuthLoginInstance.getLastErrorCode(mContext).getCode();
