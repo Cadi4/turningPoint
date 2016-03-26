@@ -15,7 +15,7 @@ import android.widget.TextView;
 public class moreFragment extends Fragment implements View.OnClickListener{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstance) {
         View view = inflater.inflate(R.layout.fragment_more, container, false);
-        TextView infoLogin = (TextView) view.findViewById(R.id.textview_to_afterlogin);
+        TextView infoLogin = (TextView) view.findViewById(R.id.myId_info_button);
         infoLogin.setOnClickListener(this);
         return view;
     }
@@ -23,11 +23,13 @@ public class moreFragment extends Fragment implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         switch(v.getId()){
-            case R.id.textview_to_afterlogin :
+            case R.id.myId_info_button :
                 Log.d("onClick!!", "hi");
                 Intent intent = new Intent(this.getContext(), AfterLoginActivity.class);
                 startActivity(intent);
                 break;
+            case R.id.notice_button :
+
         }
     }
 }
