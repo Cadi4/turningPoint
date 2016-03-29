@@ -19,9 +19,9 @@ public class NoticeTextActivity extends Activity {
         setContentView(R.layout.activity_notice);
 
         TextView noticeTxt = (TextView) findViewById(R.id.edit_notice);
-        noticeTxt.setText(readTxt());
+//        noticeTxt.setText(readTxt());
     }
-
+/*
     private String readTxt() {
         String data = null;
         InputStream inputStream = getResources().openRawResource(R.raw.textfile_notice);
@@ -42,4 +42,5 @@ public class NoticeTextActivity extends Activity {
         }
         return data;
     }
+*/
 }
