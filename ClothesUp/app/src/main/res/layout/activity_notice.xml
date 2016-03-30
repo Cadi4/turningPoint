@@ -31,9 +31,8 @@
             android:layout_marginStart="15dp" />
     </RelativeLayout>
 
-    <EditText
-        android:id="@+id/edit_notice"
+    <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="blah" />
+        android:id="@+id/textView_noticeText" />
 </LinearLayout>

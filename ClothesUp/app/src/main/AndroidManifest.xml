@@ -22,6 +22,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".AfterLoginActivity" />
+        <activity android:name=".NoticeTextActivity" />
 
         <!-- [naveroauthlogin][start] 네이버아이디로로그인을 사용하기 위해서 넣어줘야하는 부분 -->
         <activity
@@ -33,7 +34,7 @@
         <!-- [naveroauthlogin][end] -->
         <activity android:name=".MainTabLayout" />
         <activity android:name=".MapFragment" />
-        <activity android:name=".StoreFragment"></activity>
+        <activity android:name=".StoreFragment"/>
     </application>
 
 </manifest>

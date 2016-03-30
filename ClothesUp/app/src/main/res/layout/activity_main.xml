@@ -9,7 +9,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="0dp"
         android:layout_weight="5"
         android:background="#707070" >
 
@@ -24,7 +24,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="0dp"
         android:layout_weight="3">
 
         <ImageView
@@ -57,7 +57,7 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:text="회원가입하기"
         android:id="@+id/main_sign_in"
         android:background="#707070"

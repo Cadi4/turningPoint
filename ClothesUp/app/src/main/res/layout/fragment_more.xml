@@ -25,7 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_gravity="center_horizontal"
-        android:id="@+id/myId_info_layout"
+        android:id="@+id/myinfo_layout"
         android:background="#ffffff"
         android:layout_marginBottom="1dp">
 
@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="계정정보"
-            android:id="@+id/myId_info_button"
+            android:id="@+id/myinfo_button"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/myinfo_imageView"
             android:layout_toEndOf="@+id/myinfo_imageView"
@@ -56,7 +56,7 @@
         <ImageView
             android:layout_width="30dp"
             android:layout_height="wrap_content"
-            android:id="@+id/arrow_myinfo_imageView"
+            android:id="@+id/myinfo_arrow_imageView"
             android:src="@drawable/arrow"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
@@ -100,7 +100,7 @@
         <ImageView
             android:layout_width="30dp"
             android:layout_height="wrap_content"
-            android:id="@+id/arrow_notice_imageView"
+            android:id="@+id/notice_arrow_imageView"
             android:src="@drawable/arrow"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
@@ -143,7 +143,7 @@
         <ImageView
             android:layout_width="30dp"
             android:layout_height="wrap_content"
-            android:id="@+id/arrow_guide_imageView"
+            android:id="@+id/guide_arrow_imageView"
             android:src="@drawable/arrow"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
@@ -155,7 +155,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:id="@+id/qAnda_layout"
+        android:id="@+id/q_and_a_layout"
         android:background="#ffffff"
         android:layout_marginBottom="1dp">
 
@@ -164,7 +164,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Q &amp; A"
-            android:id="@+id/qAnda_button"
+            android:id="@+id/q_and_a_button"
             android:layout_marginLeft="18dp"
             android:layout_marginStart="18dp"
             android:layout_centerVertical="true"
@@ -186,7 +186,7 @@
         <ImageView
             android:layout_width="30dp"
             android:layout_height="wrap_content"
-            android:id="@+id/arrow_q_and_a_imageView"
+            android:id="@+id/q_and_a_arrow_imageView"
             android:src="@drawable/arrow"
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"

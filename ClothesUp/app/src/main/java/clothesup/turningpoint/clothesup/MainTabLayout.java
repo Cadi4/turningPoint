@@ -54,16 +54,11 @@ public class MainTabLayout extends AppCompatActivity {
         @Override
         public Fragment getItem(int position) {
             switch(position){
-                case 0 :
-                    return new MapFragment();
-                case 1 :
-                    return new StoreFragment();
-                case 2 :
-                    return new myPageFragment();
-                case 3 :
-                    return new moreFragment();
-                default :
-                    return null;
+                case 0 :    return new MapFragment();
+                case 1 :    return new StoreFragment();
+                case 2 :    return new myPageFragment();
+                case 3 :    return new moreFragment();
+                default :   return null;
             }
         }
 
