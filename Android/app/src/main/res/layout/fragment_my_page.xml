@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#dd9999" >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Clothes UP"
+            android:id="@+id/textview_mypage_topbar"
+            android:gravity="center"
+            android:textSize="30sp"
+            android:textColor="#ffffff"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="15dp"
+        android:text="my설정"
+        android:gravity="center_vertical"
+        android:textSize="12sp"
+        android:textColor="#ffffff"
+        android:background="#aaaaaa"
+        android:paddingLeft="40dp" />
+
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:id="@+id/imageview_my_picture"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/myinfo"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="22dp" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="3dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="옥이"
+            android:id="@+id/textview_my_name"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:id="@+id/imageview_w"
+            android:src="@drawable/history"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/textview_my_name"
+            android:layout_toEndOf="@+id/textview_my_name" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="24dp">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="20dp"
+            android:id="@+id/imageView2"
+            android:src="@drawable/style_lovely"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp" />
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="20dp"
+            android:id="@+id/imageView3"
+            android:src="@drawable/style_basic"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp" />
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="20dp"
+            android:id="@+id/imageView4"
+            android:src="@drawable/style_"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <se.emilsjolander.stickylistheaders.StickyListHeadersListView
+            android:id="@+id/sticky_mypage_list_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#33dd8888"/>
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="200dp"
+            android:id="@+id/scroll_helper"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="35dp"
+            android:src="@drawable/scroll_helper"
+            android:layout_marginRight="18dp" />
+
+    </RelativeLayout>
+
+</LinearLayout>
