@@ -74,14 +74,14 @@ public class ListViewAdapter extends BaseAdapter {
             holder.storeImage.setVisibility(View.GONE);
         }
 
-        holder.storeRank.setText(contentDB.getInfo().getRank());
+        //holder.storeRank.setText(contentDB.getInfo().getRank());
         String tmp = " ";
         for(int i=0; i<contentDB.getName().size(); i++) {
             tmp = tmp + contentDB.getName().get(i);
         }
         holder.storeName.setText(tmp);
         holder.storeNum.setText(contentDB.getId());
-        holder.storeHit.setText(contentDB.getInfo().getHit());
+        //holder.storeHit.setText(contentDB.getInfo().getHit());
 
         return convertView;
     }
