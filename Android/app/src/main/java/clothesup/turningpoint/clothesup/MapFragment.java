@@ -160,10 +160,10 @@ public class MapFragment extends Fragment implements View.OnClickListener {
             Proxy proxy = new Proxy();
             content = proxy.findServerStoreByLocation(clickedXY);
             if(content == null){
-                Log.e("server connection fail", "Proxy fail e");
+                Log.e("MapFragment : server connection fail", "Proxy fail e");
             }
             else if(content.isEmpty()) {
-                Log.i("Async Proxy cannot find", String.valueOf(content));
+                Log.i("MapFragment : Async Proxy cannot find by location", String.valueOf(content));
             }
             return null;
         }

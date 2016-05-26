@@ -3,6 +3,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+<!--
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="#dd9999" >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Clothes UP"
+            android:id="@+id/textview_map_topbar"
+            android:gravity="center"
+            android:textSize="30sp"
+            android:textColor="#ffffff"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+-->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -81,42 +98,47 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="70dp"
-            android:paddingLeft="30dp"
-            android:paddingRight="30dp">
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp">
 
             <EditText
-                android:layout_width="250dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/editText_map_search"
                 android:hint="내위치 검색  ex) C901 or 토니모리"
                 android:gravity="left"
                 android:textSize="15sp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
                 android:lines="1"
+                android:layout_toLeftOf="@+id/imageview_search_button"
+                android:layout_toStartOf="@+id/imageview_search_button"
+                android:layout_marginRight="10dp"
                 android:singleLine="true"
-                android:textColorHint="#FF4081"
-                android:layout_centerVertical="true"
-                android:layout_centerHorizontal="true" />
+                android:textColorHint="#FF4081" />
 
             <ImageView
-                android:layout_width="35dp"
-                android:layout_height="35dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:id="@+id/imageview_search_button"
-                android:src="@drawable/search_icon"
+                android:src="@mipmap/ic_launcher"
                 android:layout_centerVertical="true"
-                android:layout_toRightOf="@+id/editText_map_search"
-                android:layout_toEndOf="@+id/editText_map_search" />
-
-            <ImageView
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:id="@+id/imageview_back_button"
-                android:src="@drawable/arrow_counterpart"
-                android:layout_centerVertical="true"
-                android:layout_toLeftOf="@+id/editText_map_search"
-                android:layout_toStartOf="@+id/editText_map_search" />
+                android:layout_alignParentLeft="false"
+                android:layout_alignParentStart="false"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true" />
 
         </RelativeLayout>
 
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:id="@+id/imageview_back_button"
+            android:src="@drawable/arrow_counterpart"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
     </RelativeLayout>
 
 </LinearLayout>

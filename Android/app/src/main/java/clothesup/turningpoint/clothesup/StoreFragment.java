@@ -12,17 +12,27 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class StoreFragment extends Fragment {
-    private ListView mListView = null;
-    private ListViewAdapter mAdapter = null;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+
+public class StoreFragment extends Fragment implements View.OnClickListener {
+//    private ListView mListView;
+//    private ListViewAdapter mAdapter;
+    private TextView result;
+    private Button btn_all;
+    private NetworkService service;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstance) {
@@ -36,21 +46,49 @@ public class StoreFragment extends Fragment {
         spinner_rank.setAdapter(RKadapter);
         setRetainInstance(true);    // Retain fragment instance across configuration changes
 
+        result = (TextView) view.findViewById(R.id.txt_result);
+        btn_all = (Button) view.findViewById(R.id.btn_all);
+
+        ApplicationController application = new ApplicationController();
+        application.buildNetworkService();
+        service = application.getNetworkService();
+
+        btn_all.setOnClickListener(this);
+
+/*
         mListView = (ListView) view.findViewById(R.id.listView_storeItemList);
 
         mAdapter = new ListViewAdapter(this.getContext());
         mListView.setAdapter(mAdapter);
-/*
-        mAdapter.addItem("1", ContextCompat.getDrawable(getContext(), R.drawable.store), "About Some", "B-6", "조회수 800");
-        mAdapter.addItem("2", ContextCompat.getDrawable(getContext(), R.drawable.store), "강남스타일", "B-11", "조회수 700");
-        mAdapter.addItem("3", ContextCompat.getDrawable(getContext(), R.drawable.store), "A-round101", "B-48", "조회수 600");
-        mAdapter.addItem("4", ContextCompat.getDrawable(getContext(), R.drawable.store), "Mango Steen", "D-6", "조회수 500");
-        mAdapter.addItem("5", ContextCompat.getDrawable(getContext(), R.drawable.store), "HANABEE", "E-1", "조회수 400");
-        mAdapter.addItem("6", ContextCompat.getDrawable(getContext(), R.drawable.store), "KATE", "F-10", "조회수 300");
-        mAdapter.addItem("7", ContextCompat.getDrawable(getContext(), R.drawable.store), "Monologue", "남-5", "조회수 200");
-        mAdapter.addItem("8", ContextCompat.getDrawable(getContext(), R.drawable.store), "빨간고양이", "북-7", "조회수 100");
 */
         return view;
+    }
+
+    @Override
+    public void onClick(View v) {
+        Call<List<ContentDB>> thumbnailCall = service.getServerStores();
+        thumbnailCall.enqueue(new Callback<List<ContentDB>>() {
+            @Override
+            public void onResponse(Call<List<ContentDB>> call, Response<List<ContentDB>> response) {
+                if(response.isSuccessful()) {
+                    List<ContentDB> content_temp = response.body();
+
+                    String show_txt = "";
+                    for(ContentDB contentDB : content_temp) {
+                        show_txt += contentDB.getId();
+                    }
+                    result.setText(show_txt);
+                } else {
+                    int statusCode = response.code();
+                    Log.i("MyTag", "응답코드:" + statusCode);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<ContentDB>> call, Throwable t) {
+                Log.i("MyTag", "서버 onFailure 에러내용:" + t.getMessage());
+            }
+        });
     }
 
     public static class ViewHolder {

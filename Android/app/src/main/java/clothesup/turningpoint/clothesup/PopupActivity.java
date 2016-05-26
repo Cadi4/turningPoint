@@ -54,7 +54,7 @@ public class PopupActivity extends Activity {
                 Log.e("server connection fail", "Proxy fail e");
             }
             else if(content.isEmpty()) {
-                Log.i("Async Proxy cannot find", String.valueOf(content));
+                Log.i("Async Proxy cannot find by location", String.valueOf(content));
                 finish();
             }
             return null;

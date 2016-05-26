@@ -47,8 +47,9 @@ public class ContentDB {
     }
 
     public class Info {
-        private ArrayList<String> kind;
-        private ArrayList<String> style;
+        private String goods;
+        private String kind;
+        private String style;
         private String price;
         private boolean card;
         private boolean refund;
@@ -59,12 +60,14 @@ public class ContentDB {
         private ArrayList<String> holiday;
         private String image;
         private int score;
-        private int countN;
+        public int rank;
+        public String hit;
 
-        public Info(ArrayList<String> kind, ArrayList<String> style, String price,
+        public Info(String goods, String kind, String style, String price,
                     boolean card, boolean refund, boolean exchange, boolean fitting,
-                    int open, int close, ArrayList<String> holiday, String image,
-                    int score, int countN) {
+                    int open, int close, ArrayList<String> holiday, String image, int score,
+                    int rank, String hit) {
+            this.goods = goods;
             this.kind = kind;
             this.style = style;
             this.price = price;
@@ -77,14 +80,19 @@ public class ContentDB {
             this.holiday = holiday;
             this.image = image;
             this.score = score;
-            this.countN = countN;
+            this.rank = rank;
+            this.hit = hit;
         }
 
-        public ArrayList<String> getKind() {
+        public String getGoods() {
+            return goods;
+        }
+
+        public String getKind() {
             return kind;
         }
 
-        public ArrayList<String> getStyle() {
+        public String getStyle() {
             return style;
         }
 
@@ -128,15 +136,16 @@ public class ContentDB {
             return score;
         }
 
-        public int getCountN() {
-            return countN;
-        }
+        public int getRank() { return rank; }
+
+        public String getHit() { return hit; }
 
         @Override
         public String toString() {
             return "Info{" +
-                    "kind=" + kind +
-                    ", style=" + style +
+                    "goods='" + goods + '\'' +
+                    ", kind='" + kind + '\'' +
+                    ", style='" + style + '\'' +
                     ", price='" + price + '\'' +
                     ", card=" + card +
                     ", refund=" + refund +
@@ -147,7 +156,8 @@ public class ContentDB {
                     ", holiday=" + holiday +
                     ", image='" + image + '\'' +
                     ", score=" + score +
-                    ", countN=" + countN +
+                    ", rank=" + rank +
+                    ", hit=" + hit + '\'' +
                     '}';
         }
     }
