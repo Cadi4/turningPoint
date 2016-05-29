@@ -50,25 +50,27 @@ public class ContentDB {
         private ArrayList<String> kind;
         private ArrayList<String> style;
         private String price;
-        private boolean card;
-        private boolean refund;
-        private boolean exchange;
-        private boolean fitting;
+        private int card;
+        private int cash;
+        private int refund;
+        private int exchange;
+        private int fitting;
         private int open;
         private int close;
         private ArrayList<String> holiday;
         private String image;
-        private int score;
+        private float score;
         private int countN;
 
         public Info(ArrayList<String> kind, ArrayList<String> style, String price,
-                    boolean card, boolean refund, boolean exchange, boolean fitting,
+                    int card, int cash, int refund, int exchange, int fitting,
                     int open, int close, ArrayList<String> holiday, String image,
-                    int score, int countN) {
+                    float score, int countN) {
             this.kind = kind;
             this.style = style;
             this.price = price;
             this.card = card;
+            this.cash = cash;
             this.refund = refund;
             this.exchange = exchange;
             this.fitting = fitting;
@@ -92,19 +94,23 @@ public class ContentDB {
             return price;
         }
 
-        public boolean isCard() {
+        public int isCard() {
             return card;
         }
 
-        public boolean isRefund() {
+        public int isCash() {
+            return cash;
+        }
+
+        public int isRefund() {
             return refund;
         }
 
-        public boolean isExchange() {
+        public int isExchange() {
             return exchange;
         }
 
-        public boolean isFitting() {
+        public int isFitting() {
             return fitting;
         }
 
@@ -124,7 +130,7 @@ public class ContentDB {
             return image;
         }
 
-        public int getScore() {
+        public float getScore() {
             return score;
         }
 

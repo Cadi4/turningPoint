@@ -1,6 +1,7 @@
 package clothesup.turningpoint.clothesup;
 
 import android.util.Log;
+import android.widget.RelativeLayout;
 
 import java.io.IOException;
 import java.util.List;
@@ -21,6 +22,7 @@ public class Proxy {
         service = retrofit.create(MappingService.class);
     }
 
+    // Store
     public List<ContentDB> getServerStores(){
         Call<List<ContentDB>> call = service.getServerStores();
         try{
@@ -64,6 +66,104 @@ public class Proxy {
         try{
             List<ContentDB> content = call.execute().body();
             return content;
+        }
+        catch (IOException e){
+            Log.e("Proxy", e.getMessage());
+        }
+        return null;
+    }
+
+    // User
+    public List<UserDB> getServerUsers(){
+        Call<List<UserDB>> call = service.getServerUsers();
+        try{
+            List<UserDB> contents = call.execute().body();
+            return contents;
+        }
+        catch (IOException e){
+            Log.e("Proxy", e.getMessage());
+        }
+        return null;
+    }
+
+    public List<UserDB> findUserById(int id){
+        Call<List<UserDB>> call = service.findUserById(id);
+        try{
+            List<UserDB> contents = call.execute().body();
+            return contents;
+        }
+        catch (IOException e){
+            Log.e("Proxy", e.getMessage());
+        }
+        return null;
+    }
+
+    public List<UserDB> findUserByNickname(String nickname){
+        Call<List<UserDB>> call = service.findUserByNickname(nickname);
+        try{
+            List<UserDB> contents = call.execute().body();
+            return contents;
+        }
+        catch (IOException e){
+            Log.e("Proxy", e.getMessage());
+        }
+        return null;
+    }
+
+    public List<UserDB> findUserByEmail(String email){
+        Call<List<UserDB>> call = service.findUserByEmail(email);
+        try{
+            List<UserDB> contents = call.execute().body();
+            return contents;
+        }
+        catch (IOException e){
+            Log.e("Proxy", e.getMessage());
+        }
+        return null;
+    }
+
+    // Review
+    public List<ReviewDB> getServerReviews(){
+        Call<List<ReviewDB>> call = service.getServerReviews();
+        try{
+            List<ReviewDB> contents = call.execute().body();
+            return contents;
+        }
+        catch (IOException e){
+            Log.e("Proxy", e.getMessage());
+        }
+        return null;
+    }
+
+    public List<ReviewDB> findReviewsByStore(String storeId){
+        Call<List<ReviewDB>> call = service.findReviewsByStore(storeId);
+        try{
+            List<ReviewDB> contents = call.execute().body();
+            return contents;
+        }
+        catch (IOException e){
+            Log.e("Proxy", e.getMessage());
+        }
+        return null;
+    }
+
+    public List<ReviewDB> findReviewsByUserId(int userId){
+        Call<List<ReviewDB>> call = service.findReviewsByUserId(userId);
+        try{
+            List<ReviewDB> contents = call.execute().body();
+            return contents;
+        }
+        catch (IOException e){
+            Log.e("Proxy", e.getMessage());
+        }
+        return null;
+    }
+
+    public List<ReviewDB> findReviewsByReviewId(int reviewId){
+        Call<List<ReviewDB>> call = service.findReviewsByReviewId(reviewId);
+        try{
+            List<ReviewDB> contents = call.execute().body();
+            return contents;
         }
         catch (IOException e){
             Log.e("Proxy", e.getMessage());

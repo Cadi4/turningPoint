@@ -9,6 +9,7 @@ import retrofit2.http.Path;
  * Created by bro Jo on 2016-05-06
  */
 public interface MappingService {
+    // Store
     @GET("/stores")
     Call<List<ContentDB>> getServerStores();
 
@@ -26,5 +27,43 @@ public interface MappingService {
     Call<List<ContentDB>> findServerStoreByLocation(
             @Path("clickedX") int clickedX,
             @Path("clickedY") int clickedY
+    );
+
+    // User
+    @GET("/users")
+    Call<List<UserDB>> getServerUsers();
+
+    @GET("/usersById/{id}")
+    Call<List<UserDB>> findUserById(
+            @Path("id") int id
+    );
+
+    @GET("/usersByNickname/{nick}")
+    Call<List<UserDB>> findUserByNickname(
+            @Path("nick") String nickname
+    );
+
+    @GET("/usersByEmail/{email}")
+    Call<List<UserDB>> findUserByEmail(
+            @Path("email") String email
+    );
+
+    // Review
+    @GET("/reviews")
+    Call<List<ReviewDB>> getServerReviews();
+
+    @GET("/reviewsByStore/{storeId}")
+    Call<List<ReviewDB>> findReviewsByStore(
+            @Path("storeId") String storeId
+    );
+
+    @GET("/reviewsByUserId/{userId}")
+    Call<List<ReviewDB>> findReviewsByUserId(
+            @Path("userId") int userId
+    );
+
+    @GET("/reviewsByReviewId/{reviewId}")
+    Call<List<ReviewDB>> findReviewsByReviewId(
+            @Path("reviewId") int reviewId
     );
 }

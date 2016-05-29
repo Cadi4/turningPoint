@@ -53,7 +53,7 @@ public class AfterLoginActivity extends AppCompatActivity implements View.OnClic
                 "\nname : " + userName +
                 "\n");
     }
-    private String xmlParsingByXpath(String InputXML, String target) {
+    protected String xmlParsingByXpath(String InputXML, String target) {
         try {
             InputSource inputSource = new InputSource(new StringReader((InputXML)));
             Document document = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(inputSource);
