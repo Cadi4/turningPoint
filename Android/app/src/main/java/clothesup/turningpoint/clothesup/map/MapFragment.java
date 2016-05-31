@@ -1,10 +1,7 @@
-package clothesup.turningpoint.clothesup;
+package clothesup.turningpoint.clothesup.map;
 
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
-import android.os.IBinder;
-import android.os.SystemClock;
-import android.view.inputmethod.*;
 import android.os.AsyncTask;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -21,12 +18,13 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import clothesup.turningpoint.clothesup.network.Proxy;
+import clothesup.turningpoint.clothesup.R;
+import clothesup.turningpoint.clothesup.data.ContentDB;
 import uk.co.senab.photoview.PhotoViewAttacher;
 import uk.co.senab.photoview.PhotoViewAttacher.OnMatrixChangedListener;
 import uk.co.senab.photoview.PhotoViewAttacher.OnScaleChangeListener;
-import uk.co.senab.photoview.PhotoViewAttacher.OnSingleFlingListener;
 import uk.co.senab.photoview.PhotoViewAttacher.OnPhotoTapListener;
-import uk.co.senab.photoview.PhotoViewAttacher.OnViewTapListener;
 
 /**
  * Created by bro.Jo on 2016-03-21.
@@ -160,10 +158,10 @@ public class MapFragment extends Fragment implements View.OnClickListener {
             Proxy proxy = new Proxy();
             content = proxy.findServerStoreByLocation(clickedXY);
             if(content == null){
-                Log.e("server connection fail", "Proxy fail e");
+                Log.e("MapFragment : server connection fail", "Proxy fail e");
             }
             else if(content.isEmpty()) {
-                Log.i("Async Proxy cannot find", String.valueOf(content));
+                Log.i("MapFragment : Async Proxy cannot find by location", String.valueOf(content));
             }
             return null;
         }

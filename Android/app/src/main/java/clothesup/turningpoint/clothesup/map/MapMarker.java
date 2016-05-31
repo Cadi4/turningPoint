@@ -1,4 +1,4 @@
-package clothesup.turningpoint.clothesup;
+package clothesup.turningpoint.clothesup.map;
 
 import android.graphics.RectF;
 import android.util.Log;
@@ -6,6 +6,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.view.View;
 import android.widget.TextView;
+
+import clothesup.turningpoint.clothesup.R;
 
 /**
  * Created by bro.Jo on 2016-03-30

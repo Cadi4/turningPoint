@@ -19,7 +19,7 @@
             android:value="1651373271790820" />
 
         <activity
-            android:name=".MainActivity"
+            android:name=".login.MainLoginActivity"
             android:label="ClothesUp">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,10 +31,10 @@
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:label="ClothesUp"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" /-->
-        <activity android:name=".AfterLoginActivity" />
-        <activity android:name=".NoticeActivity" />
-        <activity android:name=".GuideActivity" />
-        <activity android:name=".QandAActivity" />
+        <activity android:name=".more.AfterLoginActivity" />
+        <activity android:name=".more.NoticeActivity" />
+        <activity android:name=".more.GuideActivity" />
+        <activity android:name=".more.QandAActivity" />
 
         <!-- [naveroauthlogin][start] 네이버아이디로로그인을 사용하기 위해서 넣어줘야하는 부분 -->
         <activity
@@ -45,9 +45,9 @@
             android:label="OAuth2.0 In-app" />
         <!-- [naveroauthlogin][end] -->
 
-        <activity android:name=".MainTabLayout"
+        <activity android:name=".main.MainTabLayout"
             android:windowSoftInputMode="adjustPan"/>
-        <activity android:name=".PopupActivity"
+        <activity android:name=".map.PopupActivity"
             android:theme="@android:style/Theme.Dialog"
             android:screenOrientation="portrait" />
     </application>

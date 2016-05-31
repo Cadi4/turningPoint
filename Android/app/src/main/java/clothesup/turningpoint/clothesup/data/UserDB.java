@@ -1,4 +1,4 @@
-package clothesup.turningpoint.clothesup;
+package clothesup.turningpoint.clothesup.data;
 
 import java.util.ArrayList;
 

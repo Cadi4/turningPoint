@@ -1,4 +1,4 @@
-package clothesup.turningpoint.clothesup;
+package clothesup.turningpoint.clothesup.more;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,6 +14,10 @@ import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 import java.io.StringReader;
+
+import clothesup.turningpoint.clothesup.login.MainLoginActivity;
+import clothesup.turningpoint.clothesup.login.OAuthNaver;
+import clothesup.turningpoint.clothesup.R;
 
 /**
  * Created by bro. Jo
@@ -39,7 +43,7 @@ public class AfterLoginActivity extends AppCompatActivity implements View.OnClic
         logout = (TextView) findViewById(R.id.button_logout);
     }
     private void fillTextViews() {
-        loginWIthWhat.setText("Login with " + MainActivity.LW);
+        loginWIthWhat.setText("Login with " + MainLoginActivity.LW);
         String userInfo = oAuthNaver.getOpenAPI();
         String userEmail = xmlParsingByXpath(userInfo, "email");
         String userBirthday = xmlParsingByXpath(userInfo, "birthday");
@@ -53,7 +57,7 @@ public class AfterLoginActivity extends AppCompatActivity implements View.OnClic
                 "\nname : " + userName +
                 "\n");
     }
-    protected String xmlParsingByXpath(String InputXML, String target) {
+    public String xmlParsingByXpath(String InputXML, String target) {
         try {
             InputSource inputSource = new InputSource(new StringReader((InputXML)));
             Document document = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(inputSource);

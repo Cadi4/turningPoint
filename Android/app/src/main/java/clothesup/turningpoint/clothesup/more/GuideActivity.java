@@ -1,4 +1,4 @@
-package clothesup.turningpoint.clothesup;
+package clothesup.turningpoint.clothesup.more;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -14,6 +14,8 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.ImageView;
+
+import clothesup.turningpoint.clothesup.R;
 
 /**
  * Created by Hanbyeol on 2016-03-26

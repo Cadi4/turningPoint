@@ -1,4 +1,4 @@
-package clothesup.turningpoint.clothesup;
+package clothesup.turningpoint.clothesup.data;
 
 import java.util.ArrayList;
 
@@ -47,6 +47,7 @@ public class ContentDB {
     }
 
     public class Info {
+        private String goods;
         private ArrayList<String> kind;
         private ArrayList<String> style;
         private String price;
@@ -80,6 +81,10 @@ public class ContentDB {
             this.image = image;
             this.score = score;
             this.countN = countN;
+        }
+
+        public String getGoods() {
+            return goods;
         }
 
         public ArrayList<String> getKind() {
@@ -134,15 +139,15 @@ public class ContentDB {
             return score;
         }
 
-        public int getCountN() {
-            return countN;
-        }
+        public int getCountN() { return countN; }
+
 
         @Override
         public String toString() {
             return "Info{" +
-                    "kind=" + kind +
-                    ", style=" + style +
+                    "goods='" + goods + '\'' +
+                    ", kind='" + kind + '\'' +
+                    ", style='" + style + '\'' +
                     ", price='" + price + '\'' +
                     ", card=" + card +
                     ", refund=" + refund +
@@ -153,7 +158,7 @@ public class ContentDB {
                     ", holiday=" + holiday +
                     ", image='" + image + '\'' +
                     ", score=" + score +
-                    ", countN=" + countN +
+                    ", countN=" + countN + '\'' +
                     '}';
         }
     }

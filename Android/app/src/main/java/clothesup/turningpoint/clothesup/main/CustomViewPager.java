@@ -1,4 +1,4 @@
-package clothesup.turningpoint.clothesup;
+package clothesup.turningpoint.clothesup.main;
 
 import android.content.Context;
 import android.support.v4.view.ViewPager;

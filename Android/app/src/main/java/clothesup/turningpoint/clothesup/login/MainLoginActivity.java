@@ -1,12 +1,13 @@
-package clothesup.turningpoint.clothesup;
+package clothesup.turningpoint.clothesup.login;
 
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ImageView;
 import android.view.View;
-import java.util.List;
+
+import clothesup.turningpoint.clothesup.R;
+import clothesup.turningpoint.clothesup.login.OAuthNaver;
 
 //import com.facebook.FacebookSdk;
 //import com.facebook.login.widget.LoginButton;
@@ -14,7 +15,7 @@ import java.util.List;
 /**
  *  main page, login page
  */
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainLoginActivity extends AppCompatActivity implements View.OnClickListener {
     public static String LW;            // login with what?
     private ImageView loginWithNaver, loginWithFb, loginWithGoogle; // UI
     private static Context mContext;     //context

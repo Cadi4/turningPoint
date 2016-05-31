@@ -1,35 +1,41 @@
-package clothesup.turningpoint.clothesup;
+package clothesup.turningpoint.clothesup.store;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import java.util.ArrayList;
+
+import java.util.List;
+
+import clothesup.turningpoint.clothesup.R;
+import clothesup.turningpoint.clothesup.data.ContentDB;
+import clothesup.turningpoint.clothesup.store.StoreFragment;
 
 /**
  * Created by Hanbyeol on 2016-05-13
  */
-public class ListViewAdapter extends BaseAdapter {
+public class StoreListViewAdapter extends BaseAdapter {
     private Context context = null;
-    private ArrayList<ContentDB> storeList = new ArrayList<ContentDB>();
+    private List<ContentDB> contentList;
+    //private ArrayList<ContentDB> storeList = new ArrayList<ContentDB>();
 
-    public ListViewAdapter(Context context) {
+    public StoreListViewAdapter(Context context, List<ContentDB> contentList) {
         super();
         this.context = context;
+        this.contentList = contentList;
     }
 
     @Override
     public int getCount() {
-        return storeList.size();
+        return contentList.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return storeList.get(position);
+        return contentList.get(position);
     }
 
     @Override
@@ -40,30 +46,24 @@ public class ListViewAdapter extends BaseAdapter {
     // layout for one store item in listView
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-
         StoreFragment.ViewHolder holder;
+        View row = convertView;
 
-        if(convertView == null) {
-            holder = new StoreFragment.ViewHolder();
-
+        if(row == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.listview_store_item, parent, false);
-
-            holder.storeRank = (TextView) convertView.findViewById(R.id.textView_storeRank);
-            holder.storeImage = (ImageView) convertView.findViewById(R.id.imageView_storeImage);
-            holder.storeName = (TextView) convertView.findViewById(R.id.textView_storeName);
-            holder.storeNum = (TextView) convertView.findViewById(R.id.textView_storeNum);
-            holder.storeHit = (TextView) convertView.findViewById(R.id.textView_storeHit);
-
+            row = inflater.inflate(R.layout.listview_store_item, parent, false);
             // using setTag to store instances of Store objects in View
-            convertView.setTag(holder);
+            //convertView.setTag(holder);
         }
-        else {
+        setTextViews(position, row);
+        setImage(position, row);
+
+  /*      else {
             // calling getTag to return instances of Store objects
             holder = (StoreFragment.ViewHolder) convertView.getTag();
         }
 
-        ContentDB contentDB = storeList.get(position);
+        ContentDB contentDB = contentList.get(position);
 
         if(contentDB.getInfo().getImage() != null) {
             holder.storeImage.setVisibility(View.VISIBLE);
@@ -82,15 +82,32 @@ public class ListViewAdapter extends BaseAdapter {
         holder.storeName.setText(tmp);
         holder.storeNum.setText(contentDB.getId());
         //holder.storeHit.setText(contentDB.getInfo().getHit());
+*/
+        return row;
+    }
 
-        return convertView;
+    private void setTextViews(int position, View row) {
+        TextView storeRank = (TextView) row.findViewById(R.id.textView_storeRank);
+        TextView storeName = (TextView) row.findViewById(R.id.textView_storeName);
+        TextView storeNum = (TextView) row.findViewById(R.id.textView_storeNum);
+        TextView storeHit = (TextView) row.findViewById(R.id.textView_storeHit);
+
+        storeRank.setText(position + 1 + "");
+        storeName.setText(contentList.get(position).getName().get(0).toString());
+        storeNum.setText(contentList.get(position).getId().toString());
+        storeHit.setText("조회수 " + contentList.get(position).getInfo().getCountN());
+    }
+
+    private void setImage(int position, View row) {
+        ImageView storeImage = (ImageView) row.findViewById(R.id.imageView_storeImage);
+        // add image??? ImageView.setimg??
     }
 
     public void addItem(ContentDB newDB) {
-        storeList.add(newDB);
+        contentList.add(newDB);
     }
 
     public void removeItem(int position) {
-        storeList.remove(position);
+        contentList.remove(position);
     }
 }

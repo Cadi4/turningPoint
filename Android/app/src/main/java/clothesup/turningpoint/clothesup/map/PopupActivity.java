@@ -1,4 +1,4 @@
-package clothesup.turningpoint.clothesup;
+package clothesup.turningpoint.clothesup.map;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -14,6 +14,13 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.List;
+
+import clothesup.turningpoint.clothesup.network.Proxy;
+import clothesup.turningpoint.clothesup.R;
+import clothesup.turningpoint.clothesup.data.UserDB;
+import clothesup.turningpoint.clothesup.login.OAuthNaver;
+import clothesup.turningpoint.clothesup.more.AfterLoginActivity;
+import clothesup.turningpoint.clothesup.data.ContentDB;
 
 public class PopupActivity extends Activity {
     private List<ContentDB> content;
@@ -76,7 +83,7 @@ public class PopupActivity extends Activity {
                 Log.e("server connection fail", "Proxy fail e");
             }
             else if(content.isEmpty()) {
-                Log.i("Async Proxy cannot find", String.valueOf(content));
+                Log.i("Proxy cannot find by location", String.valueOf(content));
                 finish();
             }
             return null;
@@ -101,13 +108,11 @@ public class PopupActivity extends Activity {
                 //refund
                 //fitting
                 ViewGroup.LayoutParams params = controlStar.getLayoutParams();
-                //float width = (float)content.get(0).getInfo().getScore();
-                float width = 3.0f;
+                float width = (float)content.get(0).getInfo().getScore();
                 width = calWidth(width);
                 params.width = (int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, width, getResources().getDisplayMetrics());
                 params.height = (int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 14, getResources().getDisplayMetrics());
                 controlStar.setLayoutParams(params);
-
             }
             else{
                 Log.e("Async", "two element!! or empty");
@@ -163,14 +168,14 @@ public class PopupActivity extends Activity {
         else if(width < 2.6f)   return 42.9f;
         else if(width < 2.9f)   return 44.6f;
         else if(width < 3.1f)   return 48;
-        else if(width < 3.4f)   return 0;
-        else if(width < 3.6f)   return 0;
-        else if(width < 3.9f)   return 0;
-        else if(width < 4.1f)   return 0;
-        else if(width < 4.4f)   return 0;
-        else if(width < 4.6f)   return 0;
-        else if(width < 4.9f)   return 0;
-        else if(width < 5.1f)   return 0;
+        else if(width < 3.4f)   return 58.8f;
+        else if(width < 3.6f)   return 60.5f;
+        else if(width < 3.9f)   return 62.2f;
+        else if(width < 4.1f)   return 65;
+        else if(width < 4.4f)   return 76.2f;
+        else if(width < 4.6f)   return 77.7f;
+        else if(width < 4.9f)   return 79.6f;
+        else if(width < 5.1f)   return 82;
         return 0;
     }
 

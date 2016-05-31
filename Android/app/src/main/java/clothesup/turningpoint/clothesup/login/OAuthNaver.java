@@ -1,4 +1,4 @@
-package clothesup.turningpoint.clothesup;
+package clothesup.turningpoint.clothesup.login;
 
 import android.app.Activity;
 import android.content.Context;
@@ -11,6 +11,8 @@ import com.nhn.android.naverlogin.OAuthLogin;
 import com.nhn.android.naverlogin.OAuthLoginDefine;
 import com.nhn.android.naverlogin.OAuthLoginHandler;
 
+import clothesup.turningpoint.clothesup.main.MainTabLayout;
+
 /**
  * this class is for login with naver
  */
@@ -22,9 +24,9 @@ public class OAuthNaver {
     private static String accessToken;          //token for access, this token last 4 hours
     private static String refreshToken;         //token for refreshing accessToken, refreshToken last more time than accessToken
     private static OAuthLogin mOAuthLoginInstance;
-    private Context mContext = MainActivity.getmContext();
+    private Context mContext = MainLoginActivity.getmContext();
 
-    OAuthNaver(){
+    public OAuthNaver(){
         OAuthNaverInitData(mContext);
     }
     private void OAuthNaverInitData(Context mContext) {
@@ -36,7 +38,7 @@ public class OAuthNaver {
     /**
      *  To start login
      */
-    protected void startLogin(){
+    public void startLogin(){
         mOAuthLoginInstance.startOauthLoginActivity((Activity) mContext, mOAuthLoginHandler);
     }
 
@@ -53,8 +55,8 @@ public class OAuthNaver {
                 String tokenType = mOAuthLoginInstance.getTokenType(mContext);
                 //mOauthAT.setText(accessToken);    //mOauthRT.setText(refreshToken);   //mOauthExpires.setText(String.valueOf(expiresAt));
                 //mOauthTokenType.setText(tokenType);  //mOAuthState.setText(mOAuthLoginInstance.getState(mContext).toString());
-                Intent intent = new Intent(MainActivity.getmContext(), MainTabLayout.class);        //after login completed
-                MainActivity.getmContext().startActivity(intent);
+                Intent intent = new Intent(MainLoginActivity.getmContext(), MainTabLayout.class);        //after login completed
+                MainLoginActivity.getmContext().startActivity(intent);
             } else {
                 String errorCode = mOAuthLoginInstance.getLastErrorCode(mContext).getCode();
                 String errorDesc = mOAuthLoginInstance.getLastErrorDesc(mContext);
@@ -75,8 +77,8 @@ public class OAuthNaver {
             boolean isSuccessDeleteToken = mOAuthLoginInstance.logoutAndDeleteToken(mContext);
 
             if (!isSuccessDeleteToken) {
-                Log.d("MainActivity", "errorCode:" + mOAuthLoginInstance.getLastErrorCode(mContext));
-                Log.d("MainActivity", "errorDesc:" + mOAuthLoginInstance.getLastErrorDesc(mContext));
+                Log.d("MainLoginActivity", "errorCode:" + mOAuthLoginInstance.getLastErrorCode(mContext));
+                Log.d("MainLoginActivity", "errorDesc:" + mOAuthLoginInstance.getLastErrorDesc(mContext));
             }
             return null;
         }

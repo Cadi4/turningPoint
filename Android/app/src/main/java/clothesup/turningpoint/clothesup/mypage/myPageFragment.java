@@ -1,8 +1,7 @@
-package clothesup.turningpoint.clothesup;
+package clothesup.turningpoint.clothesup.mypage;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,6 +12,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import clothesup.turningpoint.clothesup.R;
 import se.emilsjolander.stickylistheaders.StickyListHeadersAdapter;
 import se.emilsjolander.stickylistheaders.StickyListHeadersListView;
 
@@ -23,8 +23,6 @@ public class myPageFragment extends Fragment implements View.OnTouchListener {
     View view;
     ImageView scrollHelper;
     StickyListHeadersListView stickyList;
-    boolean isScrollHelper = false;
-
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstance) {
         view = inflater.inflate(R.layout.fragment_my_page, container, false);
         initStickyList();
@@ -42,12 +40,8 @@ public class myPageFragment extends Fragment implements View.OnTouchListener {
     private void initScrollHelper() {
         scrollHelper = (ImageView)view.findViewById(R.id.scroll_helper);
         scrollHelper.setOnTouchListener(this);
-        scrollHelper.setAlpha(10);
     }
 
-    /**
-     * onTouchListener is used when scrollHelper is touched
-     */
     @Override
     public boolean onTouch(View v, MotionEvent event) {
         int action = event.getAction();
@@ -61,14 +55,10 @@ public class myPageFragment extends Fragment implements View.OnTouchListener {
                 case 4: stickyList.setSelection(13); break;
             }
         }
-        controlScrollHelper();
         return true;
     }
 
-    /**
-     * MyStickyListAdapter is adapter for list about my information
-     */
-    public class MyStickyListAdapter extends BaseAdapter implements StickyListHeadersAdapter{
+    public class MyStickyListAdapter extends BaseAdapter implements StickyListHeadersAdapter {
         private String[] countries;
         private LayoutInflater inflater;
 
@@ -97,7 +87,6 @@ public class myPageFragment extends Fragment implements View.OnTouchListener {
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            controlScrollHelper();
             ViewHolder holder = new ViewHolder();
             if (position < 5 || 9 <= position && position < 12) {
                 convertView = inflater.inflate(R.layout.listview_store_item, parent, false);
@@ -156,39 +145,6 @@ public class myPageFragment extends Fragment implements View.OnTouchListener {
         class ViewHolder {
             TextView text, rank;
         }
-    }
 
-    /**
-     * controlScrollHelper and VanishScrollHelper are for making disappear or appear ScrollHelper
-     */
-    private void controlScrollHelper() {
-        if(!isScrollHelper) {
-            // show scroll helper
-            isScrollHelper = true;
-            scrollHelper.setAlpha(100);
-            // dim scroll helper
-            Handler handler = new Handler();
-            handler.postDelayed(new VanishScrollHelper(), 1200);
-        }
-    }
-    private class VanishScrollHelper implements Runnable{
-        @Override
-        public void run() {
-            getActivity().runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        synchronized (this) {
-                            scrollHelper.setAlpha(10);
-                            //Log.e("thread run?", "yes" + i + " / " + (int) i);
-                        }
-                        isScrollHelper = false;
-                    } catch (Exception e) {
-                        Log.e("thread run?", "error");
-                        e.printStackTrace();
-                    }
-                }
-            });
-        }
     }
 }

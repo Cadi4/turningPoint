@@ -1,11 +1,13 @@
-package clothesup.turningpoint.clothesup;
+package clothesup.turningpoint.clothesup.network;
 
 import android.util.Log;
-import android.widget.RelativeLayout;
 
 import java.io.IOException;
 import java.util.List;
 
+import clothesup.turningpoint.clothesup.data.ReviewDB;
+import clothesup.turningpoint.clothesup.data.UserDB;
+import clothesup.turningpoint.clothesup.data.ContentDB;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;

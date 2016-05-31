@@ -1,6 +1,10 @@
-package clothesup.turningpoint.clothesup;
+package clothesup.turningpoint.clothesup.network;
 
 import java.util.List;
+
+import clothesup.turningpoint.clothesup.data.ReviewDB;
+import clothesup.turningpoint.clothesup.data.UserDB;
+import clothesup.turningpoint.clothesup.data.ContentDB;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;

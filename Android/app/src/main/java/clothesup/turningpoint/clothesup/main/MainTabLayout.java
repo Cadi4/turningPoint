@@ -1,4 +1,4 @@
-package clothesup.turningpoint.clothesup;
+package clothesup.turningpoint.clothesup.main;
 
 import android.content.Context;
 import android.support.design.widget.TabLayout;
@@ -8,6 +8,12 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import clothesup.turningpoint.clothesup.map.MapFragment;
+import clothesup.turningpoint.clothesup.R;
+import clothesup.turningpoint.clothesup.store.StoreFragment;
+import clothesup.turningpoint.clothesup.more.moreFragment;
+import clothesup.turningpoint.clothesup.mypage.myPageFragment;
 
 public class MainTabLayout extends AppCompatActivity {
     TabLayout tabLayout;    //menu

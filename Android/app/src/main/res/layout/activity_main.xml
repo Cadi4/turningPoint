@@ -4,7 +4,7 @@
     android:id="@+id/mainContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="clothesup.turningpoint.clothesup.MainActivity"
+    tools:context=".login.MainLoginActivity"
     android:orientation="vertical">
 
     <RelativeLayout
