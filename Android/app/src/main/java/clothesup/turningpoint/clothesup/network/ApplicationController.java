@@ -13,26 +13,24 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class ApplicationController extends Application {
 
-    private NetworkService networkService;
+    private MappingService mappingService;
 
     @Override
     public void onCreate() {
         super.onCreate();
     }
 
-    public NetworkService getNetworkService() {
-        return networkService;
+    public MappingService getNetworkService() {
+        return mappingService;
     }
 
     public void buildNetworkService() {
         synchronized(ApplicationController.class) {
-            if(networkService == null) {
-                Gson gson = new GsonBuilder().create();
-                GsonConverterFactory factory = GsonConverterFactory.create(gson);
+            if(mappingService == null) {
 
                 Retrofit retrofit = new Retrofit.Builder().baseUrl("http://52.196.54.163:1337")
-                        .addConverterFactory(factory).build();
-                networkService = retrofit.create(NetworkService.class);
+                        .addConverterFactory(GsonConverterFactory.create()).build();
+                mappingService = retrofit.create(MappingService.class);
             }
         }
     }

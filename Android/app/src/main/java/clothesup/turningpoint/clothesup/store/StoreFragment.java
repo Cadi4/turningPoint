@@ -7,18 +7,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 import java.util.List;
 
 import clothesup.turningpoint.clothesup.R;
 import clothesup.turningpoint.clothesup.network.ApplicationController;
 import clothesup.turningpoint.clothesup.data.ContentDB;
-import clothesup.turningpoint.clothesup.network.NetworkService;
+import clothesup.turningpoint.clothesup.network.MappingService;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -26,9 +23,7 @@ import retrofit2.Response;
 public class StoreFragment extends Fragment implements View.OnClickListener {
     private ListView mListView;
     private StoreListViewAdapter mAdapter;
-    private TextView result;
-    private Button btn_all;
-    private NetworkService service;
+    private MappingService service;
     private View view;
 
     @Override
@@ -62,11 +57,6 @@ public class StoreFragment extends Fragment implements View.OnClickListener {
             public void onResponse(Call<List<ContentDB>> call, Response<List<ContentDB>> response) {
                 if(response.isSuccessful()) {
                     List<ContentDB> contentList = response.body();
-
-                    String show_txt = "";
-                    for(ContentDB contentDB : contentList) {
-                        show_txt += "\r\n" + contentDB.getId();
-                    }
                     makeListView(contentList);
                 } else {
                     int statusCode = response.code();
@@ -76,15 +66,15 @@ public class StoreFragment extends Fragment implements View.OnClickListener {
 
             @Override
             public void onFailure(Call<List<ContentDB>> call, Throwable t) {
-                Log.i("MyTag", "서버 onFailure 에러내용:" + t.getMessage());
+                Log.e("MyTag", "서버 onFailure 에러내용:" + t.getMessage());
             }
         });
     }
 
     private void makeListView(List<ContentDB> contentList) {
-        Log.e("makeListView", contentList.get(0).toString());
-        Log.e("makeListView", contentList.get(1).toString());
-        Log.e("makeListView", contentList.get(2).toString());
+        Log.i("makeListView", contentList.get(0).toString());
+        Log.i("makeListView", contentList.get(1).toString());
+        Log.i("makeListView", contentList.get(2).toString());
         mListView = (ListView) view.findViewById(R.id.listView_storeItemList);
         mAdapter = new StoreListViewAdapter(this.getContext(), contentList);
         mListView.setAdapter(mAdapter);
@@ -92,13 +82,5 @@ public class StoreFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-    }
-
-    public static class ViewHolder {
-        public TextView storeRank;
-        public ImageView storeImage;
-        public TextView storeName;
-        public TextView storeNum;
-        public TextView storeHit;
     }
 }

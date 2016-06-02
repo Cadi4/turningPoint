@@ -26,7 +26,7 @@
         android:src="@mipmap/ic_launcher" />
 
     <TextView
-        android:id="@+id/textView_storeNum"
+        android:id="@+id/textView_storeId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/textView_storeRank"
@@ -41,16 +41,16 @@
         android:id="@+id/textView_storeName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/textView_storeNum"
+        android:layout_alignTop="@+id/textView_storeId"
         android:layout_marginLeft="14dp"
         android:layout_marginStart="14dp"
-        android:layout_toEndOf="@+id/textView_storeNum"
-        android:layout_toRightOf="@+id/textView_storeNum"
+        android:layout_toEndOf="@+id/textView_storeId"
+        android:layout_toRightOf="@+id/textView_storeId"
         android:text="꼬까옷"
         android:textSize="15sp" />
 
     <TextView
-        android:id="@+id/textView_storeHit"
+        android:id="@+id/textView_storeCountN"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -58,7 +58,6 @@
         android:layout_alignTop="@+id/textView_storeName"
         android:layout_marginEnd="34dp"
         android:layout_marginRight="34dp"
-        android:text="조회수"
         android:textSize="15dp" />
 
 </RelativeLayout>

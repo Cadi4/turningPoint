@@ -1,6 +1,9 @@
 package clothesup.turningpoint.clothesup.store;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,11 +11,16 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.List;
 
 import clothesup.turningpoint.clothesup.R;
 import clothesup.turningpoint.clothesup.data.ContentDB;
-import clothesup.turningpoint.clothesup.store.StoreFragment;
+import retrofit2.http.Url;
 
 /**
  * Created by Hanbyeol on 2016-05-13
@@ -20,7 +28,6 @@ import clothesup.turningpoint.clothesup.store.StoreFragment;
 public class StoreListViewAdapter extends BaseAdapter {
     private Context context = null;
     private List<ContentDB> contentList;
-    //private ArrayList<ContentDB> storeList = new ArrayList<ContentDB>();
 
     public StoreListViewAdapter(Context context, List<ContentDB> contentList) {
         super();
@@ -43,71 +50,36 @@ public class StoreListViewAdapter extends BaseAdapter {
         return position;
     }
 
-    // layout for one store item in listView
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        StoreFragment.ViewHolder holder;
-        View row = convertView;
 
-        if(row == null) {
+        if(convertView == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            row = inflater.inflate(R.layout.listview_store_item, parent, false);
-            // using setTag to store instances of Store objects in View
-            //convertView.setTag(holder);
+            convertView = inflater.inflate(R.layout.listview_store_item, parent, false);
         }
-        setTextViews(position, row);
-        setImage(position, row);
+        setTextViews(position, convertView);
+        setImage(position, convertView);
 
-  /*      else {
-            // calling getTag to return instances of Store objects
-            holder = (StoreFragment.ViewHolder) convertView.getTag();
-        }
-
-        ContentDB contentDB = contentList.get(position);
-
-        if(contentDB.getInfo().getImage() != null) {
-            holder.storeImage.setVisibility(View.VISIBLE);
-            holder.storeImage.setImageResource(R.drawable.store);
-//            holder.storeImage.setImageBitmap(new ImageLoader().getBitmapImg("image/store.png"));
-        }
-        else {
-            holder.storeImage.setVisibility(View.GONE);
-        }
-
-        //holder.storeRank.setText(contentDB.getInfo().getRank());
-        String tmp = " ";
-        for(int i=0; i<contentDB.getName().size(); i++) {
-            tmp = tmp + contentDB.getName().get(i);
-        }
-        holder.storeName.setText(tmp);
-        holder.storeNum.setText(contentDB.getId());
-        //holder.storeHit.setText(contentDB.getInfo().getHit());
-*/
-        return row;
+        return convertView;
     }
 
     private void setTextViews(int position, View row) {
         TextView storeRank = (TextView) row.findViewById(R.id.textView_storeRank);
         TextView storeName = (TextView) row.findViewById(R.id.textView_storeName);
-        TextView storeNum = (TextView) row.findViewById(R.id.textView_storeNum);
-        TextView storeHit = (TextView) row.findViewById(R.id.textView_storeHit);
+        TextView storeId = (TextView) row.findViewById(R.id.textView_storeId);
+        TextView storeCountN = (TextView) row.findViewById(R.id.textView_storeCountN);
 
         storeRank.setText(position + 1 + "");
         storeName.setText(contentList.get(position).getName().get(0).toString());
-        storeNum.setText(contentList.get(position).getId().toString());
-        storeHit.setText("조회수 " + contentList.get(position).getInfo().getCountN());
+        storeId.setText(contentList.get(position).getId().toString());
+        storeCountN.setText("조회수 " + contentList.get(position).getInfo().getCountN());
     }
 
     private void setImage(int position, View row) {
         ImageView storeImage = (ImageView) row.findViewById(R.id.imageView_storeImage);
-        // add image??? ImageView.setimg??
-    }
 
-    public void addItem(ContentDB newDB) {
-        contentList.add(newDB);
-    }
-
-    public void removeItem(int position) {
-        contentList.remove(position);
+        Picasso.with(context).load("http://52.196.54.163:1337/" + contentList.get(position).getInfo().getImage().toString())
+                .resize(50, 50).into(storeImage);
+        Log.i("Picasso", " completed: " + contentList.get(position).getInfo().getImage().toString());
     }
 }
