@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="#dd9999">
+
+        <TextView
+            android:id="@+id/textView_detail_topbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="false"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="Clothes Up"
+            android:textColor="#ffffff"
+            android:textSize="30sp" />
+
+        <ImageView
+            android:id="@+id/imageView_detail_backButton"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="false"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
+            android:src="@drawable/arrow_counterpart" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="92dp"
+        android:layout_gravity="center_horizontal">
+
+        <ImageView
+            android:id="@+id/imageView_detail_storeImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="38dp"
+            android:layout_marginStart="38dp"
+            android:src="@android:mipmap/sym_def_app_icon" />
+
+        <TextView
+            android:id="@+id/textView_detail_storeId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="28dp"
+            android:layout_marginStart="28dp"
+            android:layout_toEndOf="@+id/imageView_detail_storeImage"
+            android:layout_toRightOf="@+id/imageView_detail_storeImage"
+            android:text="B 301"
+            android:textColor="#000000"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/textView_detail_storeName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/textView_detail_storeId"
+            android:layout_marginLeft="108dp"
+            android:layout_marginStart="108dp"
+            android:layout_toEndOf="@+id/imageView_detail_storeImage"
+            android:layout_toRightOf="@+id/imageView_detail_storeImage"
+            android:text="꼬까옷"
+            android:textColor="#000000"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:id="@+id/imageView_detail_fav_store"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_toEndOf="@+id/textView_detail_storeName"
+            android:layout_toRightOf="@+id/textView_detail_storeName"
+            android:src="@drawable/favorite" />
+
+        <ImageView
+            android:id="@+id/imageView_detail_visit_store"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_alignTop="@+id/imageView_detail_fav_store"
+            android:layout_marginRight="20dp"
+            android:layout_toEndOf="@+id/imageView_detail_fav_store"
+            android:layout_toRightOf="@+id/imageView_detail_fav_store"
+            android:src="@drawable/history" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="347dp"
+        android:layout_height="133dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/xml_border">
+
+        <ImageView
+            android:id="@+id/imageView_detail_time"
+            android:layout_width="70dp"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="27dp"
+            android:layout_marginStart="27dp"
+            android:layout_marginTop="13dp"
+            android:src="@drawable/time" />
+
+        <ImageView
+            android:id="@+id/imageView_detail_price"
+            android:layout_width="73dp"
+            android:layout_height="30dp"
+            android:layout_alignLeft="@+id/imageView_detail_time"
+            android:layout_alignStart="@+id/imageView_detail_time"
+            android:layout_centerVertical="true"
+            android:src="@drawable/price" />
+
+        <ImageView
+            android:id="@+id/imageView_detail_able_card"
+            android:layout_width="70dp"
+            android:layout_height="25dp"
+            android:layout_alignEnd="@+id/imageView_detail_time"
+            android:layout_alignRight="@+id/imageView_detail_time"
+            android:layout_below="@+id/imageView_detail_price"
+            android:layout_marginEnd="9dp"
+            android:layout_marginRight="9dp"
+            android:layout_marginTop="12dp"
+            android:src="@drawable/able_card" />
+
+        <ImageView
+            android:id="@+id/imageView_able_cash"
+            android:layout_width="70dp"
+            android:layout_height="25dp"
+            android:layout_alignLeft="@+id/imageView_detail_price"
+            android:layout_alignStart="@+id/imageView_detail_price"
+            android:layout_alignTop="@+id/imageView_detail_able_card"
+            android:layout_marginLeft="46dp"
+            android:layout_marginStart="46dp"
+            android:src="@drawable/able_cash" />
+
+        <ImageView
+            android:id="@+id/imageView_able_exchange"
+            android:layout_width="70dp"
+            android:layout_height="25dp"
+            android:layout_alignTop="@+id/imageView_able_cash"
+            android:layout_marginLeft="29dp"
+            android:layout_marginStart="29dp"
+            android:layout_toEndOf="@+id/imageView_detail_price"
+            android:layout_toRightOf="@+id/imageView_detail_price"
+            android:src="@drawable/able_exchange" />
+
+        <ImageView
+            android:id="@+id/imageView_able_refund"
+            android:layout_width="70dp"
+            android:layout_height="25dp"
+            android:layout_alignTop="@+id/imageView_able_exchange"
+            android:layout_toLeftOf="@+id/imageView_able_fitting"
+            android:layout_toStartOf="@+id/imageView_able_fitting"
+            android:src="@drawable/able_refund" />
+
+        <ImageView
+            android:id="@+id/imageView_able_fitting"
+            android:layout_width="70dp"
+            android:layout_height="25dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/imageView_able_refund"
+            android:layout_marginEnd="27dp"
+            android:layout_marginRight="27dp"
+            android:src="@drawable/able_fitting" />
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/imageView_detail_map_thumbnail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:src="@mipmap/ic_launcher" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#dcdcdc" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal">
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="25dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="23dp"
+            android:text="상점 별점 주기"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="13sp" />
+
+        <RatingBar
+            android:id="@+id/ratingBar_detail"
+            style="@style/ratingbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginEnd="9dp"
+            android:layout_marginRight="9dp"
+            android:layout_marginTop="10dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:isIndicator="false"
+            android:numStars="5"
+            android:rating="0.0"
+            android:stepSize="0.5" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/ratingBar_detail"
+            android:layout_alignRight="@+id/ratingBar_detail"
+            android:layout_below="@+id/ratingBar_detail"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="9dp"
+            android:text="간편하게 상점 별점을 주고 후기를 남겨보세요 :) !"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/textView3"
+            android:layout_alignStart="@+id/textView3"
+            android:layout_alignTop="@+id/detail_starChart"
+            android:text="상점 평균 별점"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/textView_detail_averageStars"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/textView6"
+            android:layout_alignRight="@+id/textView6"
+            android:layout_below="@+id/textView6"
+            android:layout_marginTop="8dp"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <com.github.mikephil.charting.charts.HorizontalBarChart
+            android:id="@+id/detail_starChart"
+            android:layout_width="230dp"
+            android:layout_height="80dp"
+            android:layout_below="@+id/textView5"
+            android:layout_toEndOf="@+id/textView6"
+            android:layout_toRightOf="@+id/textView6" />
+
+        <TextView
+            android:id="@+id/textView_detail_storeGrade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView6"
+            android:layout_toLeftOf="@+id/textView_detail_averageStars"
+            android:layout_toStartOf="@+id/textView_detail_averageStars"
+            android:text="grade"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="40sp" />
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/imageView_detail_review"
+            android:src="@drawable/review_button"
+            android:layout_below="@+id/textView_detail_averageStars"
+            android:layout_alignRight="@+id/detail_starChart"
+            android:layout_alignEnd="@+id/detail_starChart" />
+
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#f08080"
+    android:layout_width="280dp"
+    android:layout_height="120dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="사진을 등록하시겠습니까?"
+        android:id="@+id/textView10"
+        android:layout_marginTop="20dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="@android:color/white"
+        android:textSize="15sp"
+        android:textStyle="bold"/>
+
+    <Button
+        android:layout_width="65dp"
+        android:layout_height="30dp"
+        android:text="네"
+        android:id="@+id/button_dialog_yes"
+        android:background="@android:color/white"
+        android:clickable="true"
+        android:textColor="#f08080"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        android:layout_marginLeft="11dp"
+        android:layout_marginStart="11dp"
+        android:layout_marginBottom="26dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/textView10"
+        android:layout_alignStart="@+id/textView10" />
+
+    <Button
+        android:layout_width="65dp"
+        android:layout_height="30dp"
+        android:text="아니오"
+        android:id="@+id/button_dialog_no"
+        android:background="@android:color/white"
+        android:clickable="true"
+        android:textColor="#f08080"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        android:layout_alignTop="@+id/button_dialog_yes"
+        android:layout_alignRight="@+id/textView10"
+        android:layout_alignEnd="@+id/textView10"
+        android:layout_marginRight="11dp"
+        android:layout_marginEnd="11dp" />
+
+</RelativeLayout>

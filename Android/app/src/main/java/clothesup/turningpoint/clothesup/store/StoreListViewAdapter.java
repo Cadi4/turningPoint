@@ -1,8 +1,6 @@
 package clothesup.turningpoint.clothesup.store;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,14 +11,10 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.List;
 
 import clothesup.turningpoint.clothesup.R;
 import clothesup.turningpoint.clothesup.data.ContentDB;
-import retrofit2.http.Url;
 
 /**
  * Created by Hanbyeol on 2016-05-13
@@ -52,7 +46,6 @@ public class StoreListViewAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-
         if(convertView == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.listview_store_item, parent, false);

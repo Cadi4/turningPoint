@@ -1,11 +1,13 @@
 package clothesup.turningpoint.clothesup.store;
 
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
@@ -20,9 +22,9 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class StoreFragment extends Fragment implements View.OnClickListener {
-    private ListView mListView;
-    private StoreListViewAdapter mAdapter;
+public class StoreFragment extends Fragment {
+    private ListView storeListView;
+    private StoreListViewAdapter storeListViewAdapter;
     private MappingService service;
     private View view;
 
@@ -30,15 +32,14 @@ public class StoreFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstance) {
         view = inflater.inflate(R.layout.fragment_store, container, false);
         initDropDownView();
-        setNetWork();
+        setNetwork();
         getListFromServer();
         return view;
     }
 
-    private void setNetWork() {
+    private void setNetwork() {
         ApplicationController application = new ApplicationController();
-        application.buildNetworkService();
-        service = application.getNetworkService();
+        service = application.buildNetworkService();
     }
 
     private void initDropDownView() {
@@ -55,7 +56,7 @@ public class StoreFragment extends Fragment implements View.OnClickListener {
         thumbnailCall.enqueue(new Callback<List<ContentDB>>() {
             @Override
             public void onResponse(Call<List<ContentDB>> call, Response<List<ContentDB>> response) {
-                if(response.isSuccessful()) {
+                if (response.isSuccessful()) {
                     List<ContentDB> contentList = response.body();
                     makeListView(contentList);
                 } else {
@@ -71,16 +72,25 @@ public class StoreFragment extends Fragment implements View.OnClickListener {
         });
     }
 
-    private void makeListView(List<ContentDB> contentList) {
+    private void makeListView(final List<ContentDB> contentList) {
         Log.i("makeListView", contentList.get(0).toString());
         Log.i("makeListView", contentList.get(1).toString());
         Log.i("makeListView", contentList.get(2).toString());
-        mListView = (ListView) view.findViewById(R.id.listView_storeItemList);
-        mAdapter = new StoreListViewAdapter(this.getContext(), contentList);
-        mListView.setAdapter(mAdapter);
-    }
+        storeListView = (ListView) view.findViewById(R.id.listView_storeItemList);
+        storeListViewAdapter = new StoreListViewAdapter(this.getContext(), contentList);
+        storeListView.setAdapter(storeListViewAdapter);
 
-    @Override
-    public void onClick(View v) {
+        storeListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent detailIntent = new Intent(getContext(), DetailStoreActivity.class);
+
+                detailIntent.putExtra("image", contentList.get(position).getInfo().getImage());
+                detailIntent.putExtra("id", contentList.get(position).getId());
+                detailIntent.putExtra("name", contentList.get(position).getName().get(0));
+
+                startActivity(detailIntent);
+            }
+        });
     }
 }

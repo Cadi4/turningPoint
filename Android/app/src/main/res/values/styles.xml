@@ -1,5 +1,4 @@
 <resources>
-
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
@@ -7,5 +6,24 @@
         <item name="colorPrimaryDark">#CC7777</item>
         <item name="colorAccent">#CC7777</item>
     </style>
+
+    <style name="ratingbar" parent="@android:style/Widget.RatingBar">
+        <item name="android:indeterminateOnly">false</item>
+        <item name="android:progressDrawable">@drawable/ratingbar</item>
+        <item name="android:minHeight">42dip</item>
+        <item name="android:maxHeight">42dip</item>
+        <item name="android:minWidth">50dp</item>
+        <item name="android:maxWidth">50dp</item>
+        <item name="android:thumb">@null</item>
+    </style>
+
+    <string-array name="question">
+        <item>카테고리를 선택해주세요</item>
+        <item>1. 기능 오류 제보</item>
+        <item>2. 아이디어 제안</item>
+        <item>3. 응원의 메세지</item>
+        <item>4. 클로즈업 제휴 문의</item>
+        <item>5. 기타</item>
+    </string-array>
 
 </resources>

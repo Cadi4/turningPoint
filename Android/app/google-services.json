@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1005375117612",
+    "project_id": "firebase-clothesup"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1005375117612:android:88a05c7ca940f009",
+        "android_client_info": {
+          "package_name": "clothesup.turningpoint.clothesup"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1005375117612-kc3a6ekv3s7g6c8o6glr30r80r5kjbo8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "clothesup.turningpoint.clothesup",
+            "certificate_hash": "B1FFCD358C43AAC276FAF29918C79EF78E0D2CDA"
+          }
+        },
+        {
+          "client_id": "1005375117612-u77e71lm2ulvcm1750bhb668k5dakcrc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhiV2DUleEb1zpAzSjNUiVCtVdbPiQvLw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

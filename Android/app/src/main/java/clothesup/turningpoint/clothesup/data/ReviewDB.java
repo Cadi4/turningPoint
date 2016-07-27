@@ -6,10 +6,15 @@ import java.util.ArrayList;
  * Created by bro Jo on 2016-05-26.
  */
 public class ReviewDB {
+    // 리뷰 식별 번호
     private int reviewId;
+    // 리뷰어 id
     private int userId;
+    //
     private String id;
+    // 리뷰어 닉네임
     private String nickname;
+    // 별점
     private float grade;
     private ArrayList<String> style;
     private String photo;

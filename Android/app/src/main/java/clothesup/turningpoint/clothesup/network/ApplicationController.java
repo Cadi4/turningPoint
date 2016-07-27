@@ -13,18 +13,14 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class ApplicationController extends Application {
 
-    private MappingService mappingService;
+    private static MappingService mappingService;
 
     @Override
     public void onCreate() {
         super.onCreate();
     }
 
-    public MappingService getNetworkService() {
-        return mappingService;
-    }
-
-    public void buildNetworkService() {
+    public static MappingService buildNetworkService() {
         synchronized(ApplicationController.class) {
             if(mappingService == null) {
 
@@ -32,6 +28,8 @@ public class ApplicationController extends Application {
                         .addConverterFactory(GsonConverterFactory.create()).build();
                 mappingService = retrofit.create(MappingService.class);
             }
+
+            return mappingService;
         }
     }
 }
