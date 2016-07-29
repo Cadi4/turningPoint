@@ -5,4 +5,5 @@
     <color name="colorAccent">#FF4081</color>
     <color name="starAccent">#F08080</color>
     <color name="starChart">#FFBBBB</color>
+    <color name="line">#FF6666</color>
 </resources>

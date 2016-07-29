@@ -1,23 +1,20 @@
 package clothesup.turningpoint.clothesup.store;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
-import android.app.DialogFragment;
-import android.content.DialogInterface;
+import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.os.Bundle;
+import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -29,9 +26,11 @@ import clothesup.turningpoint.clothesup.R;
  * Created by Hanbyeol on 2016-07-20.
  */
 public class ReviewActivity extends Activity implements View.OnClickListener {
-    EditText visitDate;
-    private int visit_year, visit_month, visit_day;
-    static final int DATE_DIALOG_ID = 0;
+    private Calendar calendar;
+    private int visit_day;
+    private int visit_month;
+    private int visit_year;
+    private EditText visitDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,9 +38,9 @@ public class ReviewActivity extends Activity implements View.OnClickListener {
         setContentView(R.layout.activity_review_register);
 
         initView();
-        setVisitingDate();
+        setVisitDate();
         registerReview();
-  }
+    }
 
     public void initView() {
         ImageView backToDetail = (ImageView) findViewById(R.id.imageView_review_backToDetail);
@@ -58,21 +57,56 @@ public class ReviewActivity extends Activity implements View.OnClickListener {
         storeName.setText(getIntent().getStringExtra("store_name"));
     }
 
-    public void setVisitingDate() {
+    public void setVisitDate() {
+        calendar = Calendar.getInstance();
+        visit_year = calendar.get(Calendar.YEAR);
+        visit_month = calendar.get(Calendar.MONTH);
+        visit_day = calendar.get(Calendar.DAY_OF_MONTH);
         visitDate = (EditText) findViewById(R.id.editText_visit_date);
-
-        final Calendar objTime = Calendar.getInstance();
-        visit_year = objTime.get(Calendar.YEAR);
-        visit_month = objTime.get(Calendar.MONTH);
-        visit_day = objTime.get(Calendar.DAY_OF_MONTH);
 
         visitDate.setOnClickListener(this);
     }
 
     public void registerReview() {
         ViewGroup registerPhoto = (ViewGroup) findViewById(R.id.layout_review_photo);
+        View reviewText = (View) findViewById(R.id.editText_review_text);
 
         registerPhoto.setOnClickListener(this);
+    }
+
+    public static class LinedEditText extends EditText{
+        private Paint paint;
+
+        public LinedEditText(Context context, AttributeSet attrs) {
+            super(context, attrs);
+            paint = new Paint();
+
+            paint.setStyle(Paint.Style.STROKE);
+            paint.setColor(getResources().getColor(R.color.line));
+        }
+
+        @Override
+        protected void onDraw(Canvas canvas) {
+            int left = getLeft();
+            int right = getRight();
+            int paddingTop = getPaddingTop();
+            int paddingBottom = getPaddingBottom();
+            int paddingLeft = getPaddingLeft();
+            int paddingRight = getPaddingRight();
+            int height = getHeight();
+            int lineHeight = getLineHeight();
+            int count = (height-paddingTop-paddingBottom) / lineHeight;
+            int baseLine = paddingTop;
+
+            if(getLineCount() > count)
+                count = getLineCount();
+
+            for(int i=0; i<count; i++) {
+                baseLine += lineHeight;
+                canvas.drawLine(left+paddingLeft, baseLine, right-paddingRight, baseLine, paint);
+                super.onDraw(canvas);
+            }
+        }
     }
 
     @Override
@@ -85,7 +119,7 @@ public class ReviewActivity extends Activity implements View.OnClickListener {
                 // 서버에 리뷰 데이터 전송하는 method
                 break;
             case R.id.editText_visit_date:
-                showDialog(DATE_DIALOG_ID);
+                showDialog(0);
                 break;
             case R.id.layout_review_photo: {
               dialogView();
@@ -93,35 +127,21 @@ public class ReviewActivity extends Activity implements View.OnClickListener {
         }
     }
 
+    @Override
+    protected Dialog onCreateDialog(int id) {
+        return new DatePickerDialog(this, listener, visit_year, visit_month, visit_day);
+    }
+
+    private DatePickerDialog.OnDateSetListener listener
+            = new DatePickerDialog.OnDateSetListener() {
+        public void onDateSet(DatePicker view, int year, int month, int day) {
+            visitDate.setText(year + "년 " + (month+1) + "월 " + day + "일");
+        }
+    };
+
     public void dialogView() {
         PhotoDialog dialog = new PhotoDialog(this);
 
         dialog.show();
     }
-
-    protected Dialog onCreateDialog(int id) {
-        switch(id) {
-            case DATE_DIALOG_ID:
-                return new DatePickerDialog(this, mDateSetListener,
-                        visit_year, visit_month, visit_day);
-        }
-        return null;
-    }
-
-    private void updateDisplay(EditText editText) {
-        editText.setText(new StringBuffer().append(visit_year).append("년 ")
-                .append(visit_month).append("월 ").append(visit_day).append("일"));
-    }
-
-    private DatePickerDialog.OnDateSetListener mDateSetListener
-            = new DatePickerDialog.OnDateSetListener() {
-        @Override
-        public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-            visit_year = year;
-            visit_month = monthOfYear;
-            visit_day = dayOfMonth;
-
-            updateDisplay(visitDate);
-        }
-    };
 }

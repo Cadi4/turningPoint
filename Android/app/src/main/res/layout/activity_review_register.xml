@@ -196,6 +196,30 @@
                 android:layout_centerHorizontal="true"
                 android:src="@drawable/photo" />
         </RelativeLayout>
+
+        <view xmlns:android="http://schemas.android.com/apk/res/android"
+            class="clothesup.turningpoint.clothesup.store.ReviewActivity$LinedEditText"
+            android:autoLink="web|email"
+            android:background="@android:color/transparent"
+            android:capitalize="sentences"
+            android:cursorVisible="true"
+            android:fadingEdge="vertical"
+            android:gravity="top"
+            android:hint="(10~200자 이내로 써주시길 바랍니다)"
+            android:id="@+id/editText_review_text"
+            android:inputType="textMultiLine"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/layout_review_photo"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="4dp"
+            android:layout_marginTop="20dp"
+            android:layout_width="315dp"
+            android:layout_height="135dp"
+            android:maxLines="6"
+            android:padding="5dp"
+            android:textColor="#000000"
+            android:textSize="17sp" />
+
     </RelativeLayout>
 
 </LinearLayout>

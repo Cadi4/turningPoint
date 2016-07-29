@@ -70,7 +70,7 @@
             android:layout_height="206dp"
             android:ems="10"
             android:id="@+id/editText"
-            android:lines="5"
+            android:lines="11"
             android:hint="내용을 입력해주세요"
             android:cursorVisible="true"
             android:gravity="top"
